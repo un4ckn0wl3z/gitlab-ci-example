@@ -9,6 +9,10 @@ stages:
   - build
   - deploy
 
+variables:
+  image_repository: docker.io/un4ckn0wl3z/myapp
+  image_tag: v1.0
+
 run_unit_tests:
   stage: test
   before_script:
@@ -33,7 +37,7 @@ build_image:
   stage: build
   script:
     - echo "Building docker image..."
-    - echo "Tagging the docker iamge"
+    - echo "Tagging the docker image $image_repository:$image_tag"
 
 push_iamge:
   only:
@@ -43,14 +47,14 @@ push_iamge:
     - build_image
   script:
   - echo "Logging into docker registry"
-  - echo "Pushing docker iamge to registry..."
+  - echo "Pushing docker image $image_repository:$image_tag to registry..."
 
 deploy_image:
   only:
     - master
   stage: deploy
   script:
-  - echo "Deploying new docker image to $DEPLOYMENT_ENVIRONMENT using the following configuation file - $PROPERTIES_FILE ..."
+  - echo "Deploying new docker image $image_repository:$image_tag to $DEPLOYMENT_ENVIRONMENT using the following configuation file - $PROPERTIES_FILE ..."
   - cat $PROPERTIES_FILE
   
 
