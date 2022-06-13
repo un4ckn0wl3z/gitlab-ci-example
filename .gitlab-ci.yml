@@ -50,6 +50,7 @@ deploy_image:
     - master
   stage: deploy
   script:
-  - echo "Deploying new docker image to $DEPLOYMENT_ENVIRONMENT server..."
+  - echo "Deploying new docker image to $DEPLOYMENT_ENVIRONMENT using the following configuation file - $PROPERTIES_FILE ..."
+  - cat $PROPERTIES_FILE
   
 
