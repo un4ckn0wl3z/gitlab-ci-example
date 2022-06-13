@@ -1,6 +1,6 @@
 stages:
   - test
-  - buildd
+  - build
   - deploy
 
 run_unit_tests:
