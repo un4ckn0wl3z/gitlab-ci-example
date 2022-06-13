@@ -29,6 +29,8 @@ build_image:
 
 push_iamge:
   stage: build
+  needs:
+    - build_image
   script:
   - echo "Logging into docker registry"
   - echo "Pushing docker iamge to registry..."
