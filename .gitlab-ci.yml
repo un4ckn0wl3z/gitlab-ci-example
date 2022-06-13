@@ -14,7 +14,7 @@ run_unit_tests:
   before_script:
     - echo "Preparing test data..."
   script:
-    - echo "Running unit tests..."
+    - echo "Running unit tests for microservice $MICRO_SERVICE_NAME ..."
   after_script:
     - echo "Cleaning up temporory files..."
 
@@ -50,6 +50,6 @@ deploy_image:
     - master
   stage: deploy
   script:
-  - echo "Deploying new docker image to DEV server..."
+  - echo "Deploying new docker image to $DEPLOYMENT_ENVIRONMENT server..."
   
 
