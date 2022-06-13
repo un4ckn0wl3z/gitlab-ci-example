@@ -29,7 +29,7 @@ run_lint_tests:
 
 build_image:
   only:
-    - main
+    - master
   stage: build
   script:
     - echo "Building docker image..."
@@ -37,7 +37,7 @@ build_image:
 
 push_iamge:
   only:
-    - main
+    - master
   stage: build
   needs:
     - build_image
@@ -47,7 +47,7 @@ push_iamge:
 
 deploy_image:
   only:
-    - main
+    - master
   stage: deploy
   script:
   - echo "Deploying new docker image to DEV server..."
