@@ -16,6 +16,9 @@ variables:
   image_tag: v1.0
 
 run_unit_tests:
+  tags:
+    - "leecher-runner"
+    - "remote"
   stage: test
   before_script:
     - echo "Preparing test data..."
@@ -26,6 +29,9 @@ run_unit_tests:
     - echo "Cleaning up temporory files..."
 
 run_lint_tests:
+  tags:
+    - "leecher-runner"
+    - "remote"
   stage: test
   before_script:
     - echo "Preparing test data..."
@@ -35,6 +41,9 @@ run_lint_tests:
     - echo "Cleaning up temporory files..."
 
 build_image:
+  tags:
+    - "leecher-runner"
+    - "remote"
   only:
     - master
   stage: build
@@ -43,6 +52,9 @@ build_image:
     - echo "Tagging the docker image $image_repository:$image_tag"
 
 push_iamge:
+  tags:
+    - "leecher-runner"
+    - "remote"
   only:
     - master
   stage: build
@@ -53,6 +65,9 @@ push_iamge:
   - echo "Pushing docker image $image_repository:$image_tag to registry..."
 
 deploy_image:
+  tags:
+    - "leecher-runner"
+    - "remote"
   only:
     - master
   stage: deploy
