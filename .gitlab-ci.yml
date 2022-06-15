@@ -72,4 +72,4 @@ deploy_to_dev:
       docker-compose up -d"
   environment:
     name: development
-    url: http://$DEPLOY_SERVER:30070
+    url: http://$DEPLOY_SERVER:$APP_PORT
