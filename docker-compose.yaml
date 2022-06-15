@@ -1,6 +1,6 @@
 version: "3.3"
 services:
   app:
-    image: registry.gitlab.com/un4ckn0wl3z/mynodeapp-cicd-project:1.0
+    image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
     ports:
-      - 30077:3000
+      - ${DC_APP_PORT}:3000

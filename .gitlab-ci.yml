@@ -5,8 +5,9 @@ workflow:
     - when: always
 
 variables:
-  IMAGE_TAG: "1.0"
+  IMAGE_TAG: "1.1"
   APP_PATH: /root/cicd_app
+  APP_PORT: 30070
 
 stages:
   - test
@@ -64,8 +65,11 @@ deploy_to_dev:
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $DEPLOY_USER@$DEPLOY_SERVER "
       cd $APP_PATH &&
       docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com &&
-      docker-compose -f docker-compose.yaml down &&
-      docker-compose -f docker-compose.yaml up -d"
+      export DC_IMAGE_NAME=$CI_REGISTRY_IMAGE &&
+      export DC_IMAGE_TAG=$IMAGE_TAG &&
+      export DC_APP_PORT=$APP_PORT &&
+      docker-compose down &&
+      docker-compose up -d"
   environment:
     name: development
     url: http://$DEPLOY_SERVER:30077
