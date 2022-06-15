@@ -56,6 +56,8 @@ deploy_to_dev:
   tags:
   - shell
   - remote
+  before_script:
+  - chmod 400 $SSH_PRIVATE_KEY
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $DEPLOY_USER@$DEPLOY_SERVER "
       docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com &&
