@@ -62,3 +62,6 @@ deploy_to_dev:
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $DEPLOY_USER@$DEPLOY_SERVER "
       docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com &&
       docker run -d -p 30077:3000 $CI_REGISTRY_IMAGE:$IMAGE_TAG"
+  environment:
+    name: development
+    url: http://$DEPLOY_SERVER:30077
