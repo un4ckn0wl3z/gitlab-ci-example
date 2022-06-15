@@ -62,8 +62,8 @@ deploy_to_dev:
   - scp -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY ./docker-compose.yaml $DEPLOY_USER@$DEPLOY_SERVER:$APP_PATH
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $DEPLOY_USER@$DEPLOY_SERVER "
-      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com &&
       cd $APP_PATH &&
+      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com &&
       docker-compose -f docker-compose.yaml down &&
       docker-compose -f docker-compose.yaml up -d"
   environment:
