@@ -1,4 +1,4 @@
-image: node:17-alpine
+# image: node:17-alpine
 
 workflow:
   rules:
@@ -17,7 +17,7 @@ variables:
 
 run_unit_tests:
   tags:
-    - "leecher-runner"
+    - "docker"
     - "remote"
   stage: test
   before_script:
@@ -30,7 +30,7 @@ run_unit_tests:
 
 run_lint_tests:
   tags:
-    - "leecher-runner"
+    - "docker"
     - "remote"
   stage: test
   before_script:
@@ -42,7 +42,7 @@ run_lint_tests:
 
 build_image:
   tags:
-    - "leecher-runner"
+    - "docker"
     - "remote"
   only:
     - master
@@ -53,7 +53,7 @@ build_image:
 
 push_iamge:
   tags:
-    - "leecher-runner"
+    - "docker"
     - "remote"
   only:
     - master
@@ -66,7 +66,7 @@ push_iamge:
 
 deploy_image:
   tags:
-    - "leecher-runner"
+    - "docker"
     - "remote"
   only:
     - master
