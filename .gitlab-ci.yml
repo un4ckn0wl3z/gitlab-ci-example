@@ -30,7 +30,7 @@ run_unit_tests:
 
 run_lint_tests:
   tags:
-    - "docker"
+    - "shell"
     - "remote"
   stage: test
   before_script:
@@ -42,7 +42,7 @@ run_lint_tests:
 
 build_image:
   tags:
-    - "docker"
+    - "shell"
     - "remote"
   only:
     - master
